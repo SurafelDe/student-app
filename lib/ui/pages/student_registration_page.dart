@@ -3,10 +3,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../controller/student_registration_controller.dart';
-import 'button.dart';
-import 'package:student_app/util/keys.dart';
 import 'package:intl/intl.dart';
+
+import '../../ui/controllers/student_registration_controller.dart';
+import '../widgets/button.dart';
+import '../../util/constants.dart';
 
 class StudentRegistrationPage extends StatelessWidget {
   StudentRegistrationPage(isForUpdate, studentData) {
@@ -178,7 +179,7 @@ class StudentRegistrationPage extends StatelessWidget {
                               ? Text(
                                   "Choose profile picture",
                                   style: TextStyle(
-                                      fontSize: 16, color: Keys.errorColor),
+                                      fontSize: 16, color: AppColors.errorColor),
                                 )
                               : Container(),
                           // SizedBox(height: 100,),
@@ -202,22 +203,22 @@ class StudentRegistrationPage extends StatelessWidget {
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               errorStyle: TextStyle(
-                                  color: Keys.errorColor, fontSize: 10),
+                                  color: AppColors.errorColor, fontSize: 10),
                               isDense: true,
-                              contentPadding: EdgeInsets.all(15.0),
-                              border: OutlineInputBorder(
+                              contentPadding: const EdgeInsets.all(15.0),
+                              border: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
-                              enabledBorder: OutlineInputBorder(
+                              enabledBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
                               labelText: "First Name",
-                              labelStyle: TextStyle(
+                              labelStyle: const TextStyle(
                                 color: Colors.grey,
-                                fontSize: 14,
+                                fontSize: 16,
                               ),
                             ),
                             inputFormatters: <TextInputFormatter>[
@@ -250,22 +251,22 @@ class StudentRegistrationPage extends StatelessWidget {
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                               errorStyle: TextStyle(
-                                  color: Keys.errorColor, fontSize: 10),
+                                  color: AppColors.errorColor, fontSize: 10),
                               isDense: true,
-                              contentPadding: EdgeInsets.all(15.0),
-                              border: OutlineInputBorder(
+                              contentPadding: const EdgeInsets.all(15.0),
+                              border: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
-                              enabledBorder: OutlineInputBorder(
+                              enabledBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
                               labelText: "Last Name",
-                              labelStyle: TextStyle(
+                              labelStyle: const TextStyle(
                                 color: Colors.grey,
-                                fontSize: 14,
+                                fontSize: 16,
                               ),
                             ),
                             inputFormatters: <TextInputFormatter>[
@@ -273,8 +274,9 @@ class StudentRegistrationPage extends StatelessWidget {
                                   RegExp("[a-zA-Z\\s]*")),
                             ],
                             onChanged: (value) {
-                              if (controller.isFormValidated)
+                              if (controller.isFormValidated) {
                                 controller.formKey.currentState!.validate();
+                              }
                             },
                           ),
 
@@ -294,7 +296,7 @@ class StudentRegistrationPage extends StatelessWidget {
                               final DateTime? picked = await showDatePicker(
                                   context: context,
                                   initialDate: DateTime.now()
-                                      .subtract(Duration(days: 1500)),
+                                      .subtract(const Duration(days: 1500)),
                                   firstDate: DateTime(1950),
                                   lastDate: DateTime(2020));
                               if (picked != null) {
@@ -315,22 +317,22 @@ class StudentRegistrationPage extends StatelessWidget {
                             autocorrect: false,
                             decoration: InputDecoration(
                               errorStyle: TextStyle(
-                                  color: Keys.errorColor, fontSize: 10),
+                                  color: AppColors.errorColor, fontSize: 10),
                               isDense: true,
-                              contentPadding: EdgeInsets.all(15.0),
-                              border: OutlineInputBorder(
+                              contentPadding: const EdgeInsets.all(15.0),
+                              border: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
-                              enabledBorder: OutlineInputBorder(
+                              enabledBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.black12),
                               ),
                               labelText: "Date of birth",
-                              labelStyle: TextStyle(
+                              labelStyle: const TextStyle(
                                 color: Colors.grey,
-                                fontSize: 14,
+                                fontSize: 16,
                               ),
                             ),
                             inputFormatters: <TextInputFormatter>[
@@ -343,58 +345,7 @@ class StudentRegistrationPage extends StatelessWidget {
                             },
                           ),
 
-                          const SizedBox(height: 15),
-
-                          // controller.isForUpdate ? Container() :
-                          // //Profile picture
-                          // TextFormField(
-                          //   controller: controller.profileImageController,
-                          //   cursorColor: Colors.black,
-                          //   cursorWidth: 1,
-                          //   validator: (value) {
-                          //     return value == null || value.isEmpty
-                          //         ? 'Profile picture is required'
-                          //         : null;
-                          //   },
-                          //   onTap: () async {
-                          //     controller.uploadPhoto();
-                          //   },
-                          //   readOnly: true,
-                          //   autofocus: false,
-                          //   keyboardType: TextInputType.text,
-                          //   enableSuggestions: false,
-                          //   autocorrect: false,
-                          //   decoration: InputDecoration(
-                          //     errorStyle: TextStyle(
-                          //         color: Keys.errorColor, fontSize: 10),
-                          //     isDense: true,
-                          //     contentPadding: EdgeInsets.all(15.0),
-                          //     border: OutlineInputBorder(
-                          //       borderSide: BorderSide(color: Colors.black12),
-                          //     ),
-                          //     enabledBorder: OutlineInputBorder(
-                          //       borderSide: BorderSide(color: Colors.black12),
-                          //     ),
-                          //     focusedBorder: OutlineInputBorder(
-                          //       borderSide: BorderSide(color: Colors.black12),
-                          //     ),
-                          //     labelText: "Profile picture",
-                          //     labelStyle: TextStyle(
-                          //       color: Colors.grey,
-                          //       fontSize: 14,
-                          //     ),
-                          //   ),
-                          //   inputFormatters: <TextInputFormatter>[
-                          //     FilteringTextInputFormatter.allow(
-                          //         RegExp("[a-zA-Z\\s]*")),
-                          //   ],
-                          //   onChanged: (value) {
-                          //     if (controller.isFormValidated)
-                          //       controller.formKey.currentState!.validate();
-                          //   },
-                          // ),
-
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 50),
 
                           Button(
                             text: controller.isForUpdate ? "Update" : "Create",

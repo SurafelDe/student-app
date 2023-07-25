@@ -4,22 +4,22 @@
 
 import 'dart:convert';
 
-Response responseFromJson(String str) => Response.fromJson(json.decode(str));
+StudentResponse responseFromJson(String str) => StudentResponse.fromJson(json.decode(str));
 
-String responseToJson(Response data) => json.encode(data.toJson());
+String responseToJson(StudentResponse data) => json.encode(data.toJson());
 
-class Response {
+class StudentResponse {
   String? status;
   String? message;
   Student? data;
 
-  Response({
+  StudentResponse({
     this.status,
     this.message,
     this.data,
   });
 
-  factory Response.fromJson(Map<String, dynamic> json) => Response(
+  factory StudentResponse.fromJson(Map<String, dynamic> json) => StudentResponse(
     status: json["status"],
     message: json["message"],
     data: json["data"] == null ? null : Student.fromJson(json["data"]),

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:student_app/mvc/controller/student_list_controller.dart';
-import 'package:student_app/util/keys.dart';
+import '../../ui/controllers/student_list_controller.dart';
 
-import '../../core/api/student_api.dart';
-import '../../core/model/response.dart';
-import '../../util/message.dart';
-import '../view/image_picker_page.dart';
+import '../../data/api/student_api.dart';
+import '../../data/model/response.dart';
+import '../../util/toast.dart';
+import '../../ui/pages/image_picker_page.dart';
 
 class StudentRegistrationController extends GetxController {
   StudentRegistrationController(this.isForUpdate, this.studentData) {

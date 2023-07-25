@@ -1,12 +1,18 @@
 
 import 'dart:convert';
 import 'dart:io';
-import '../http/http_attrib_options.dart';
+import '../../services/http_attrib_options.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/retry.dart';
 
-class HttpService {
+abstract class IHttpService {
+  Future<String?> send(HttpAttribOptions httpAttribOptions);
+  Future<String?> multiPart(HttpAttribOptions httpAttribOptions, filepath);
+}
 
+class HttpService extends IHttpService {
+
+  @override
   Future<String?> send(HttpAttribOptions httpAttribOptions) async {
     try {
       /*prepare header*/
@@ -78,6 +84,7 @@ class HttpService {
     return null;
   }
 
+  @override
   Future<String?> multiPart(
       HttpAttribOptions httpAttribOptions, filepath) async {
 

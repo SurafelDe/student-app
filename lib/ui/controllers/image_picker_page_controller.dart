@@ -2,7 +2,7 @@
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../util/message.dart';
+import '../../util/toast.dart';
 
 typedef void UploadImageCallback(String status);
 

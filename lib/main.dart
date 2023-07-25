@@ -1,10 +1,12 @@
 import 'dart:async';
-import 'package:student_app/util/keys.dart';
+import '../util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:student_app/mvc/view/student_list_page.dart';
+import '../ui/pages/student_list_page.dart';
+
+import 'data/api/student_api.dart';
 
 void main() async {
   try {
@@ -35,6 +37,7 @@ void main() async {
 
 
 Future initApp() async {
+  StudentApi.init();
 
   EasyLoading.instance
     ..displayDuration = const Duration(milliseconds: 2000)
@@ -43,9 +46,9 @@ Future initApp() async {
     ..loadingStyle = EasyLoadingStyle.custom
     ..indicatorSize = 60.0
     ..radius = 100.0
-    ..progressColor = Keys.secondaryColor
+    ..progressColor = AppColors.secondaryColor
     ..backgroundColor = Colors.transparent
-    ..indicatorColor = Keys.secondaryColor
+    ..indicatorColor = AppColors.secondaryColor
     ..textColor = Colors.white
     ..maskColor = Colors.black45
     ..userInteractions = false

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
-import 'package:student_app/util/message.dart';
-import '../../core/api/student_api.dart';
-import '../../core/model/response.dart';
+import 'package:student_app/util/toast.dart';
+import '../../data/api/student_api.dart';
+import '../../data/model/response.dart';
 
 class StudentListController extends GetxController {
 

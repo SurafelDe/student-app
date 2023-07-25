@@ -5,10 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:student_app/mvc/view/student_registration_page.dart';
+import '../../ui/pages/student_registration_page.dart';
 
-import '../../util/keys.dart';
-import '../controller/student_list_controller.dart';
+import '../../util/constants.dart';
+import '../../ui/controllers/student_list_controller.dart';
 
 class StudentListPage extends StatelessWidget {
   const StudentListPage({super.key});
@@ -43,14 +43,14 @@ class StudentListPage extends StatelessWidget {
                           height: 40,
                           child://ElevatedButton(
                           OutlinedButton(
-                            style: OutlinedButton.styleFrom(side: BorderSide(width: 1,style: BorderStyle.solid, color: Keys.primaryColor),),
+                            style: OutlinedButton.styleFrom(side: BorderSide(width: 1,style: BorderStyle.solid, color: AppColors.primaryColor),),
                             child:
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 0),
                               child: Text( "Refresh",
                                 textAlign: TextAlign.center,
                                 style:  TextStyle(
-                                  color: Keys.primaryColor,
+                                  color: AppColors.primaryColor,
                                   fontSize: 16,//fontSize,
                                 ),
                               ),
@@ -68,13 +68,13 @@ class StudentListPage extends StatelessWidget {
                   //Student List
                   ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: controller.isSearching ? 8 : controller.studentList.length,
                       itemBuilder: (BuildContext context, index) {
                         return controller.isSearching ?
                         searchWidget() :
                         Card(
-                          margin: EdgeInsets.all(10),
+                          margin: const EdgeInsets.all(10),
                           elevation: 3,
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(8,8,0,8),
@@ -98,25 +98,25 @@ class StudentListPage extends StatelessWidget {
                                       height: 70,
                                     )
                                 ),
-                                SizedBox(width: 15,),
+                                const SizedBox(width: 15,),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('${controller.studentList[index].firstName} '
                                         '${controller.studentList[index].lastName}',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.w600
                                       ),),
-                                    SizedBox(height: 5,),
+                                    const SizedBox(height: 5,),
                                     Text('Birth Date : '
                                         '${controller.studentList[index].dateOfBirth}',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 16
                                       ), ),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 // Spacer(),
 
                                 PopupMenuButton(
@@ -130,8 +130,8 @@ class StudentListPage extends StatelessWidget {
                                         value: index,
                                         child: Row(
                                           children: [
-                                            Icon(index == 0 ? Icons.edit : Icons.delete, color: index == 0 ? Keys.primaryColor : Keys.errorColor,),
-                                            SizedBox(width: 5,),
+                                            Icon(index == 0 ? Icons.edit : Icons.delete, color: index == 0 ? AppColors.primaryColor : AppColors.errorColor,),
+                                            const SizedBox(width: 5,),
                                             Text(index == 0 ? 'Edit' : 'Delete'),
                                           ],
                                         ),
@@ -145,8 +145,8 @@ class StudentListPage extends StatelessWidget {
                                     else {
                                       Get.defaultDialog(
                                         title: "Delete",
-                                        content: Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
+                                        content: const Padding(
+                                          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 15),
                                           child: Text("Are you sure you want to delete the student data?"),
                                         ),
                                         actions: [
@@ -155,18 +155,18 @@ class StudentListPage extends StatelessWidget {
                                               Get.back();
                                               controller.deleteStudent(index);
                                             },
-                                            child: Text(
+                                            child: const Text(
                                               'Yes',
-                                              style: const TextStyle(color: Colors.black),
+                                              style: TextStyle(color: Colors.black),
                                             ),
                                           ),
                                           TextButton(
                                             onPressed: () async {
                                               Get.back();
                                             },
-                                            child: Text(
+                                            child: const Text(
                                               'No',
-                                              style: const TextStyle(color: Colors.black),
+                                              style: TextStyle(color: Colors.black),
                                             ),
                                           ),
                                         ],
@@ -183,7 +183,7 @@ class StudentListPage extends StatelessWidget {
                 floatingActionButton: FloatingActionButton(
                   // isExtended: true,
                   child: const Icon(Icons.add),
-                  backgroundColor: Keys.primaryColor,
+                  backgroundColor: AppColors.primaryColor,
                   onPressed: () {
                     Get.to(() => StudentRegistrationPage(false, null));
                   },
@@ -195,7 +195,7 @@ class StudentListPage extends StatelessWidget {
 
   searchWidget() {
     return Card(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -213,7 +213,7 @@ class StudentListPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 15,),
+            const SizedBox(width: 15,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -230,7 +230,7 @@ class StudentListPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 5,),
+                const SizedBox(height: 5,),
                 Shimmer.fromColors(
                   direction: ShimmerDirection.ltr,
                   baseColor: Colors.grey.shade300,
@@ -246,7 +246,7 @@ class StudentListPage extends StatelessWidget {
                 )
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Shimmer.fromColors(
               direction: ShimmerDirection.ltr,
               baseColor: Colors.grey.shade300,

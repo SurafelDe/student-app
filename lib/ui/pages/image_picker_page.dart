@@ -4,14 +4,14 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-import '../controller/image_picker_page_controller.dart';
-import '../view/button.dart';
+import '../../ui/controllers/image_picker_page_controller.dart';
+import '../widgets/button.dart';
 
 class ImagePickerPage extends StatelessWidget {
-  ImagePickerPageController _controller = Get.put(ImagePickerPageController());
+  final ImagePickerPageController _controller = Get.put(ImagePickerPageController());
 
-  ImagePickerPage(PickedFile? _imageFile,bool isProfilePicture, UploadImageCallback callback) {
-    _controller.imageFile = _imageFile;
+  ImagePickerPage(PickedFile? imageFile_,bool isProfilePicture, UploadImageCallback callback) {
+    _controller.imageFile = imageFile_;
     _controller.isProfilePicture = isProfilePicture;
     _controller.callback = callback;
   }
@@ -46,7 +46,7 @@ class ImagePickerPage extends StatelessWidget {
                   backgroundColor: Colors.white,
                   shadowColor: Colors.grey[200],
                   automaticallyImplyLeading: false,
-                  actionsIconTheme: IconThemeData(color: Colors.white),
+                  actionsIconTheme: const IconThemeData(color: Colors.white),
                 ),
                 body:
                 Container(
